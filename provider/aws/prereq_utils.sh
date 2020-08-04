@@ -263,7 +263,7 @@ install_aws_cli() {
 #####################################################
 create_onenode_instance() {
 	log "Create oneNode ec2 instance"
-	oneNodeInstanceId=`aws --output json --region ${AWS_REGION:?} ec2 run-instances --image-id ${AMI_ID:?} --key-name ${KEY_FILENAME:?} --security-group-ids ${sg:?} --instance-type ${ONE_NODE_INSTANCE:?} --subnet-id ${subnet_id:?} --associate-public-ip-address --block-device-mappings '[{"DeviceName":"/dev/sda1","Ebs":{"DeleteOnTermination":true,"VolumeSize":20,"VolumeType":"gp2","Encrypted":false}},{"DeviceName":"/dev/sdc","Ebs":{"DeleteOnTermination":true,"VolumeSize":20,"VolumeType":"gp2","Encrypted":false}}]' | jq -r ".Instances[0].InstanceId"`
+	oneNodeInstanceId=`aws --output json --region ${AWS_REGION:?} ec2 run-instances --image-id ${AMI_ID:?} --key-name ${KEY_FILENAME:?} --security-group-ids ${sg:?} --instance-type ${ONE_NODE_INSTANCE:?} --subnet-id ${subnet_id:?} --associate-public-ip-address --block-device-mappings '[{"DeviceName":"/dev/sda1","Ebs":{"DeleteOnTermination":true,"VolumeSize":20,"VolumeType":"gp2","Encrypted":false}},{"DeviceName":"/dev/sdc","Ebs":{"DeleteOnTermination":true,"VolumeSize":10,"VolumeType":"gp2","Encrypted":false}}]' | jq -r ".Instances[0].InstanceId"`
 
 	log "Instance ID: ${oneNodeInstanceId:?}"
 	aws --region ${AWS_REGION:?} ec2 create-tags --resources ${oneNodeInstanceId:?} --tags Key=owner,Value=${OWNER_TAG:?} Key=Name,Value=${HOST_PREFIX}${OWNER_TAG:?} Key=enddate,Value=${ENDATE_TAG:?} Key=project,Value='personal development'
