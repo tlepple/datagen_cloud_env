@@ -5,7 +5,6 @@
 ##  The goal of this repo is to setup cloud security components and build out instances.
 
 ## Notes:
-*  The materials in this repo work with CDP-DC version 7.0.3
 *  This was built and tested on Docker Version: 19.03.1
 *  This assumes you already have Docker installed
 
