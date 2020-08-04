@@ -50,11 +50,11 @@ log() {
 case "$CLOUD_PROVIDER" in
         aws)
             echo "execute aws code here... "
-	    . /app/colab-cdpdc-wwbank/provider/aws/aws_setup.sh
+	    . /app/datagen_cloud_env/provider/aws/aws_setup.sh
             ;;
         azure)
            echo "execute azure code here"
-            . /app/colab-cdpdc-wwbank/provider/azure/azure_setup.sh
+            . /app/datagen_cloud_env/provider/azure/azure_setup.sh
             ;;
         gcp)
            echo "execute gcp code here"
